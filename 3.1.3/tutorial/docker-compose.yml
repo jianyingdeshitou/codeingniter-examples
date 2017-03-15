@@ -1,0 +1,30 @@
+version: '2'
+services:
+    web:
+        image: php5-apache2-d8
+        command: /cmd/start-web.sh
+        ports:
+            - '17001:80'
+        volumes:
+            - './app:/app'
+            - './cmd:/cmd'
+        links:
+            - db
+
+    db:
+        image: mysql-d8
+        command: /cmd/start-db.sh
+        expose:
+            - '3306'
+        volumes:
+            - './cmd:/cmd'
+
+    dev:
+        image: dev-php5-apache2-d8
+        command: /cmd/start-dev.sh
+        volumes:
+            - './app:/app'
+            - './cmd:/cmd'
+        links:
+            - db
+
