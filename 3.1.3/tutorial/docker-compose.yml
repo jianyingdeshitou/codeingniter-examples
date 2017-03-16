@@ -25,6 +25,8 @@ services:
         volumes:
             - './app:/app'
             - './cmd:/cmd'
+            - './data:/data'
+            - './test:/test'
         links:
             - db
 
