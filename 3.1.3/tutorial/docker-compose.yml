@@ -18,9 +18,11 @@ services:
             - '3306'
         volumes:
             - './cmd:/cmd'
+#         volumes_from:
+            - 'cidemo-db:/var/lib/msyql'
 
     dev:
-        image: dev-php5-apache2-d8
+        image: lamp-d8
         command: /cmd/start-dev.sh
         volumes:
             - './app:/app'
@@ -30,3 +32,5 @@ services:
         links:
             - db
 
+volumes:
+    cidemo-db:
